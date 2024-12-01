@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Project List</title>
+    <h:outputStylesheet library="css" name="styles.css"/> <!-- Include CSS stylesheet -->
+</h:head>
+<h:body class="project-list-body">
+    <!-- Include header and navbar components -->
+    <ui:include src="header.xhtml"/>
+    <ui:include src="navbar.xhtml"/>
+
+    <div class="project-list-content">
+        <!-- Form to list project titles -->
+        <h:form>
+            <header>
+                <h1>Project List</h1> <!-- Page title -->
+            </header>
+            <section>
+                <ul class="project-list">
+                    <!-- Iterate over the projects and create a link for each -->
+                    <ui:repeat value="#{projectBean.projects}" var="project">
+                        <li>
+                            <!-- CommandLink to load project details using AJAX -->
+                            <h:commandLink value="#{project.title}" action="#{projectBean.loadProjectDetails(project.id)}">
+                                <f:ajax render=":projectDetails" />
+                            </h:commandLink>
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </section>
+        </h:form>
+
+        <!-- Project Details Section -->
+        <h:form id="projectDetails">
+            <h:panelGroup rendered="#{projectBean.selectedProject != null}">
+                <!-- Display selected project title -->
+                <header class="head-section">
+                    <h1 id="project-title">#{projectBean.selectedProject.title}</h1>
+                </header>
+                <!-- Display selected project overview -->
+                <section class="top-section">
+                    <div class="basic-info">
+                        <h2>Project Overview</h2>
+                        <p id="project-summary">#{projectBean.selectedProject.summary}</p>
+                    </div>
+                </section>
+                <!-- Display selected project details -->
+                <section class="bottom-section">
+                    <h2>My Work</h2>
+                    <p id="project-description">#{projectBean.selectedProject.description}</p>
+
+                    <h2>Keywords</h2>
+                    <ul id="project-keywords">
+                        <!-- Iterate over project keywords and display each keyword -->
+                        <ui:repeat value="#{projectBean.selectedProject.keywords}" var="keyword">
+                            <li>#{keyword}</li>
+                        </ui:repeat>
+                    </ul>
+
+                    <h2>What I Learned</h2>
+                    <p id="project-learned">#{projectBean.selectedProject.learned}</p>
+
+                    <h2>Accomplishments</h2>
+                    <p id="project-accomplishments">#{projectBean.selectedProject.accomplishments}</p>
+
+                    <h2>Future Enhancements</h2>
+                    <ul id="project-enhancements">
+                        <!-- Iterate over future enhancements and display each enhancement -->
+                        <ui:repeat value="#{projectBean.selectedProject.enhancements}" var="enhancement">
+                            <li>#{enhancement}</li>
+                        </ui:repeat>
+                    </ul>
+
+                    <!-- Links for navigation and project download -->
+                    <p>
+                        <a href="#{projectBean.selectedProject.downloadLink}">
+                            Download Project ZIP
+                        </a>
+                    </p>
+                    <p>
+                        <h:link value="Edit Project" outcome="edit"> <!-- Link to edit the project -->
+                            <f:param name="projectId" value="#{projectBean.selectedProject.id}"/> <!-- Pass the project ID as a parameter -->
+                        </h:link>
+                    </p>
+                    <p>
+                        <h:link value="Back to Home" outcome="index"/> <!-- Link back to the homepage -->
+                    </p>
+                    <p>
+                        <h:commandLink value="Hide Details" action="#{projectBean.resetSelectedProject}">
+                            <f:ajax render=":projectDetails" />
+                        </h:commandLink>
+                    </p>
+                </section>
+            </h:panelGroup>
+        </h:form>
+    </div>
+
+    <!-- Include footer component -->
+    <footer class="project-list-footer">
+        <p>@2024 Yicheng Xu. All rights reserved.</p>
+    </footer>
+</h:body>
+</html>

@@ -1,0 +1,378 @@
+/* Stylesheet for website */
+
+/* General body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* Navigation bar styling */
+nav {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ccc;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #f4f4f9;
+  color: #050505;
+}
+
+/* Header styling */
+header {
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  padding: 60px 0;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+/* Top section styling for project details */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.basic-info {
+  flex: 1;
+}
+
+.basic-info h2 {
+  margin: 0;
+  font-size: 2em;
+  color: #040404;
+}
+
+.basic-info p {
+  margin: 5px 0 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.photo {
+  margin-left: 20px;
+}
+
+.photo img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Bottom section styling for project details */
+.bottom-section {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+  color: #080808;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* Interests list styling */
+ul.interests {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+ul.interests li {
+  width: 30%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul.interests::before,
+ul.interests::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #333;
+}
+
+ul.interests::before {
+  left: 33.3%;
+}
+
+ul.interests::after {
+  left: 66.6%;
+}
+
+/* Link styling */
+ul li a,
+p a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+ul li a:hover,
+p a:hover {
+  color: #0056b3;
+}
+
+/* Background image styling */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px);
+  z-index: -1;
+  opacity: 0.7;
+}
+
+/* Project styling */
+.project {
+  margin-bottom: 20px;
+}
+
+.project div {
+  margin-bottom: 10px;
+}
+
+.project label {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.project textarea {
+  width: 100%;
+  height: 100px;
+  padding: 1px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+}
+
+/* Form styling */
+.form-container {
+  text-align: center;
+}
+
+.form-container label,
+.form-container input,
+.form-container textarea {
+  display: block;
+  margin: 10px auto;
+  width: 80%;
+}
+
+.form-container input,
+.form-container textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyword styling */
+#keywords-container {
+  display: inline-block;
+  text-align: center;
+}
+
+.keyword {
+  display: inline-block;
+  align-items: center;
+  margin: 5px;
+  padding: 2px 5px;
+}
+
+.remove-keyword {
+  padding: 2px 5px;
+  font-size: 12px;
+  border: none;
+  background: none;
+  color: red;
+  cursor: pointer;
+}
+
+#new-keyword {
+  width: 200px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.add-keyword {
+  padding: 2px 5px;
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 100px 300px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.05);
+}
+
+/* Footer styling with glass effect */
+footer {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Styles for project list */
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-list li {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.project-list li:hover {
+  background-color: #f4f4f9;
+  transform: scale(1.02);
+}
+
+.project-list li a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  padding: 10px;
+}
+
+.project-list li a:hover {
+  color: #007bff;
+}
+
+/* Footer styling for project list */
+.project-list-footer {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensures the body of the project list has minimum height to push the footer down */
+.project-list-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Ensures the content area grows to push the footer down */
+.project-list-content {
+  flex: 1;
+}
+
+/* Styles for project details header section */
+.head-section {
+  max-width: 500px;
+  margin: auto auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stylesheet end */

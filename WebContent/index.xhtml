@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+  <title>Welcome to My Homepage</title>
+  <h:outputStylesheet library="css" name="styles.css"/> <!-- Include CSS stylesheet -->
+</h:head>
+<h:body>
+  <!-- Include header and navbar components -->
+  <ui:include src="header.xhtml"/>
+  <ui:include src="navbar.xhtml"/>
+
+  <header>
+    <h1>Welcome to My Homepage</h1>
+  </header>
+  <section class="top-section">
+    <div class="basic-info">
+      <h2>Yicheng Xu</h2> <!-- Name of the person -->
+      <p>Software Engineering || Northeastern University(CN)</p> <!-- Education information -->
+      <p>Email: gungnir0616@gmail.com</p> <!-- Email contact -->
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/murasame-xu">linkedin.com/in/murasame-xu</a></p> <!-- LinkedIn profile link -->
+    </div>
+    <div class="photo">
+      <h:graphicImage name="images/myphoto.JPG" alt="Yicheng Xu's Photo"/> <!-- Profile photo -->
+    </div>
+  </section>
+  <section class="bottom-section">
+    <h3>Interests</h3>
+    <ul class="interests">
+      <li>Street Dance</li>
+      <li>Piano</li>
+      <li>Guitar</li>
+      <li>B-box</li>
+      <li>Basketball</li>
+      <li>Swimming</li>
+    </ul>
+    <h3>Experience and Skills</h3>
+    <p>I have a diverse range of experience in software development, from web development to mobile application development. Some of my key skills include:</p>
+    <ul>
+      <li><b>Java</b>: Proficient in using Java for building robust and efficient applications.</li>
+      <li><b>JavaScript</b>: Skilled in creating dynamic and interactive web applications using JavaScript.</li>
+      <li><b>HTML and CSS</b>: Strong understanding of web technologies for creating responsive and visually appealing websites.</li>
+      <li><b>Python</b>: Experience in using Python for data analysis and scripting tasks.</li>
+      <li><b>Project Management</b>: Adept at managing software projects, ensuring timely delivery and quality results.</li>
+    </ul>
+    <h3>My Projects</h3>
+    <ul id="project-list">
+      <!-- Repeat over projects and create a link for each project -->
+      <ui:repeat value="#{projectBean.projects}" var="project">
+        <li>
+          <h:link value="#{project.title}" outcome="project">
+            <f:param name="projectId" value="#{project.id}"/>
+          </h:link>
+        </li>
+      </ui:repeat>
+    </ul>
+    <h3>Career Goals</h3>
+    <p>My career goal is to become a proficient <b>software engineer</b>, specializing in developing innovative applications that solve real-world problems. I am particularly interested in areas such as artificial intelligence, machine learning, and cloud computing. I aspire to work in a dynamic and challenging environment where I can continue to grow and make meaningful contributions to the field of technology.</p>
+  </section>
+
+  <!-- Include footer component -->
+  <ui:include src="footer.xhtml"/>
+</h:body>
+</html>

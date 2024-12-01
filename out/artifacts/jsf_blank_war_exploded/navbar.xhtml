@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+    <nav>
+        <ul>
+            <li><h:link outcome="index" value="Home" /> <!-- Link to the homepage --></li>
+            <li><h:link outcome="projectList" value="Project List" /> <!-- Link to the project list --></li>
+            <li><h:link value="Project 1" outcome="project">
+                <f:param name="projectId" value="1"/><!-- Link to the project 1 -->
+            </h:link></li>
+            <li><h:link value="Project 2" outcome="project">
+                <f:param name="projectId" value="2"/><!-- Link to the project 2 -->
+            </h:link></li>
+        </ul>
+    </nav>
+</h:body>
+</html>

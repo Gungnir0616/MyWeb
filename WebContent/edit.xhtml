@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Edit Projects</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+    <h:outputScript library="js" name="validation.js"/> <!-- Include JavaScript file -->
+</h:head>
+<h:body>
+    <ui:include src="header.xhtml"/>
+    <ui:include src="navbar.xhtml"/>
+
+    <header>
+        <h1>Edit Projects</h1>
+    </header>
+    <section class="top-section">
+        <div class="basic-info">
+            <h2>Load and Edit Project Data</h2>
+        </div>
+    </section>
+    <section class="bottom-section">
+        <h:form id="editForm">
+            <f:event listener="#{projectBean.loadProject}" type="preRenderView"/>
+            <h:inputHidden id="projectId" value="#{projectBean.selectedProject.id}" />
+            <div class="form-container">
+                <!-- Title Field -->
+                <h:outputLabel for="title" value="Title:" />
+                <h:inputText id="title" value="#{projectBean.selectedProject.title}" required="true">
+                    <f:validateLength minimum="1" />
+                </h:inputText>
+                <h:message for="title" style="color: red;" />
+
+                <!-- Summary Field -->
+                <h:outputLabel for="summary" value="Summary:" />
+                <h:inputTextarea id="summary" value="#{projectBean.selectedProject.summary}" rows="3" required="true">
+                    <f:validateLength minimum="1" />
+                </h:inputTextarea>
+                <h:message for="summary" style="color: red;" />
+
+                <!-- Description Field -->
+                <h:outputLabel for="description" value="Description:" />
+                <h:inputTextarea id="description" value="#{projectBean.selectedProject.description}" rows="5" required="true">
+                    <f:validateLength minimum="1" />
+                </h:inputTextarea>
+                <h:message for="description" style="color: red;" />
+
+                <!-- Keywords Field -->
+                <h:outputLabel for="keywords" value="Keywords:" />
+                <div id="keywords-container">
+                    <h:inputHidden id="keywords" value="#{projectBean.selectedProject.keywords}">
+                        <f:converter converterId="listConverter"/>
+                    </h:inputHidden>
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <ui:repeat value="#{projectBean.selectedProject.keywords}" var="keyword">
+                            <li style="display: flex; align-items: center; margin-bottom: 5px;">
+                                <span>#{keyword}</span>
+                                <h:commandButton value="x" action="#{keywordBean.removeKeyword(keyword)}" styleClass="remove-keyword" style="margin-left: 10px; padding: 2px 2px;">
+                                    <f:param name="projectId" value="#{projectBean.selectedProject.id}" />
+                                </h:commandButton>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                    <div style="display: flex; align-items: center; margin-top: 10px;">
+                        <h:inputText value="#{keywordBean.newKeyword}" id="new-keyword" placeholder="Add a keyword" style="flex-grow: 1;" />
+                        <h:commandButton value="Add" action="#{keywordBean.addKeyword}" styleClass="btn" id="addKeywordButton" style="margin-left: 10px; padding: 2px 5px;">
+                            <f:param name="projectId" value="#{projectBean.selectedProject.id}" />
+                        </h:commandButton>
+                    </div>
+                    <h:message for="new-keyword" style="color: red;" />
+                </div>
+                <h:message for="keywords" style="color: red;" />
+
+                <!-- Type Field -->
+                <h:outputLabel for="type" value="Type:" />
+                <h:inputText id="type" value="#{projectBean.selectedProject.type}" required="true">
+                    <f:validateLength minimum="1" />
+                </h:inputText>
+                <h:message for="type" style="color: red;" />
+
+                <!-- Collaborators Field -->
+                <h:outputLabel for="collaborators" value="Collaborators:" />
+                <h:inputTextarea id="collaborators" value="#{projectBean.selectedProject.collaborators}" rows="3" required="true">
+                    <f:converter converterId="listConverter"/>
+                    <f:validateLength minimum="1" />
+                </h:inputTextarea>
+                <h:message for="collaborators" style="color: red;" />
+
+                <!-- Link Field -->
+                <h:outputLabel for="link" value="Link:" />
+                <h:inputText id="link" value="#{projectBean.selectedProject.link}" required="true">
+                    <f:validateLength minimum="1" />
+                    <f:validateRegex pattern="https?://.+" />
+                </h:inputText>
+                <h:message for="link" style="color: red;" />
+
+                <!-- Learned Field -->
+                <h:outputLabel for="learned" value="What I Learned:" />
+                <h:inputTextarea id="learned" value="#{projectBean.selectedProject.learned}" rows="3" required="true">
+                    <f:validateLength minimum="1" />
+                </h:inputTextarea>
+                <h:message for="learned" style="color: red;" />
+
+                <!-- Accomplishments Field -->
+                <h:outputLabel for="accomplishments" value="Accomplishments:" />
+                <h:inputTextarea id="accomplishments" value="#{projectBean.selectedProject.accomplishments}" rows="3" required="true">
+                    <f:validateLength minimum="1" />
+                </h:inputTextarea>
+                <h:message for="accomplishments" style="color: red;" />
+
+                <!-- Enhancements Field -->
+                <h:outputLabel for="enhancements" value="Enhancements:" />
+                <h:inputTextarea id="enhancements" value="#{projectBean.selectedProject.enhancements}" rows="3" required="true">
+                    <f:converter converterId="listConverter"/>
+                    <f:validateLength minimum="1" />
+                </h:inputTextarea>
+                <h:message for="enhancements" style="color: red;" />
+
+                <!-- Download Link Field -->
+                <h:outputLabel for="downloadLink" value="Download Link:" />
+                <h:inputText id="downloadLink" value="#{projectBean.selectedProject.downloadLink}" required="true">
+                    <f:validateLength minimum="1" />
+                    <f:validateRegex pattern="https?://.+" />
+                </h:inputText>
+                <h:message for="downloadLink" style="color: red;" />
+
+                <!-- Save Button -->
+                <h:commandButton value="Save" action="#{projectBean.saveProject}" styleClass="btn">
+                    <f:param name="projectId" value="#{projectBean.selectedProject.id}" />
+                </h:commandButton>
+            </div>
+            <h:messages globalOnly="true" layout="list" style="color: red;" />
+        </h:form>
+    </section>
+
+    <ui:include src="footer.xhtml"/>
+</h:body>
+</html>
